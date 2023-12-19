@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option csharp_namespace = "tx";
+
+package shelf;
+
+// The greeting service definition.
+service Shelf {
+	rpc GetCabinet (GetCabinetRequest) returns (GetCabinetReply);
+	rpc GetRow (GetRowRequest) returns (GetRowReply);
+	rpc GetLane (GetLaneRequest) returns (GetLaneReply);
+}
+
+// The request message containing the user's name.
+message GetCabinetRequest {
+	repeated uint64 Numbers = 1;
+}
+
+// The response message containing the greetings.
+message GetCabinetReply {
+	repeated Cabinet Cabinets = 1;
+}
+
+// The request message containing the user's name.
+message GetRowRequest {
+	repeated uint64 Numbers = 1;
+}
+
+// The response message containing the greetings.
+message GetRowReply {
+	repeated Row Rows = 1;
+}
+
+// The request message containing the user's name.
+message GetLaneRequest {
+	repeated uint64 Number = 1;
+}
+
+// The response message containing the greetings.
+message GetLaneReply {
+	repeated Lane Lanes = 1;
+}
+
+message Cabinet {
+	uint64 Number = 1;
+	repeated uint64 Rows = 2;
+	Position Position = 3;
+	Size Size = 4;
+}
+
+message Row {
+	uint64 Number = 1;
+	repeated uint64 Lanes = 2;
+	uint32 PositionZ = 3;
+	uint32 Height = 4;
+}
+
+message Lane {
+	uint64 Number = 1;
+	string JanCode = 2;
+	uint32 Quantity = 3;
+	int32 PositionX = 4;
+}
+
+message Position {
+	int32 X = 1;
+	int32 Y = 2;
+	int32 Z = 3;
+}
+
+message Size {
+	uint32 Width = 1;
+	uint32 Depth = 2;
+	uint32 Height = 3;
+}
