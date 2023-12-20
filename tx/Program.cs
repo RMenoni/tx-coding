@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 builder.Services.AddTransient<IEntityRepository, EntityRepository>();
 builder.Services.AddTransient<GetCabinetsInteractor, GetCabinetsInteractor>();
+builder.Services.AddTransient<GetRowInteractor, GetRowInteractor>();
+builder.Services.AddTransient<GetLaneInteractor, GetLaneInteractor>();
 
 var app = builder.Build();
 

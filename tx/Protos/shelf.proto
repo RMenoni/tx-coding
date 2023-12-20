@@ -23,22 +23,25 @@ message GetCabinetReply {
 
 // The request message containing the user's name.
 message GetRowRequest {
-	repeated uint64 Numbers = 1;
+	uint64 CabinetNumber = 1;
+	uint64 RowNumber = 2;
 }
 
 // The response message containing the greetings.
 message GetRowReply {
-	repeated Row Rows = 1;
+	optional Row Row = 1;
 }
 
 // The request message containing the user's name.
 message GetLaneRequest {
-	repeated uint64 Number = 1;
+	uint64 CabinetNumber = 1;
+	uint64 RowNumber = 2;
+	uint64 LaneNumber = 3;
 }
 
 // The response message containing the greetings.
 message GetLaneReply {
-	repeated Lane Lanes = 1;
+	optional Lane Lane = 1;
 }
 
 message Cabinet {
@@ -51,7 +54,7 @@ message Cabinet {
 message Row {
 	uint64 Number = 1;
 	repeated uint64 Lanes = 2;
-	uint32 PositionZ = 3;
+	float PositionZ = 3;
 	uint32 Height = 4;
 }
 

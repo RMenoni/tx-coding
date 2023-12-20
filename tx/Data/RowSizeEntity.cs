@@ -1,7 +1,6 @@
-﻿namespace tx.Data
+﻿namespace tx.Data;
+
+public class RowSizeEntity
 {
-    public class RowSizeEntity
-    {
-        public int Height {  get; set; }
-    }
+    public uint Height { get; set; }
 }

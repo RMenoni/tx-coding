@@ -1,11 +1,10 @@
 ﻿using tx.Data;
 
-namespace tx.Repository
+namespace tx.Repository;
+
+public interface IEntityRepository
 {
-    public interface IEntityRepository
-    {
-        public List<CabinetEntity> GetCabinets(List<UInt64> Numbers);
-        public List<RowEntity> GetRows(List<UInt64> Numbers);
-        public List<LaneEntity> GetLanes(List<UInt64> Numbers);
-    }
+    public List<CabinetEntity> GetCabinets(List<ulong> numbers);
+    public RowEntity? GetRow(ulong cabinetNumber, ulong rowNumber);
+    public LaneEntity? GetLane(ulong cabinetNumber, ulong rowNumber, ulong laneNumber);
 }

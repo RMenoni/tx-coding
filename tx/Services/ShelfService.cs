@@ -6,14 +6,18 @@ namespace tx.Services;
 public class ShelfService : Shelf.ShelfBase
 {
     private readonly GetCabinetsInteractor _getCabinetsInteractor;
-    private readonly GetCabinetsInteractor _getRowsInteractor;
-    private readonly GetCabinetsInteractor _getLanesInteractor;
-    private readonly ILogger<ShelfService> _logger;
+    private readonly GetLaneInteractor _getLaneInteractor;
+    private readonly GetRowInteractor _getRowInteractor;
 
-    public ShelfService(ILogger<ShelfService> logger, GetCabinetsInteractor getCabinetsInteractor)
+    public ShelfService(
+        GetCabinetsInteractor getCabinetsInteractor,
+        GetRowInteractor getRowInteractor,
+        GetLaneInteractor getLaneInteractor
+    )
     {
-        _logger = logger;
         _getCabinetsInteractor = getCabinetsInteractor;
+        _getRowInteractor = getRowInteractor;
+        _getLaneInteractor = getLaneInteractor;
     }
 
     public override Task<GetCabinetReply> GetCabinet(GetCabinetRequest request, ServerCallContext context)
@@ -23,11 +27,11 @@ public class ShelfService : Shelf.ShelfBase
 
     public override Task<GetRowReply> GetRow(GetRowRequest request, ServerCallContext context)
     {
-        return Task.FromResult(_getCabinetsInteractor.Process(request));
+        return Task.FromResult(_getRowInteractor.Process(request));
     }
 
     public override Task<GetLaneReply> GetLane(GetLaneRequest request, ServerCallContext context)
     {
-        return Task.FromResult(_getCabinetsInteractor.Process(request));
+        return Task.FromResult(_getLaneInteractor.Process(request));
     }
 }
