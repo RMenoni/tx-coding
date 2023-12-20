@@ -4,42 +4,35 @@ option csharp_namespace = "tx";
 
 package shelf;
 
-// The greeting service definition.
 service Shelf {
 	rpc GetCabinet (GetCabinetRequest) returns (GetCabinetReply);
 	rpc GetRow (GetRowRequest) returns (GetRowReply);
 	rpc GetLane (GetLaneRequest) returns (GetLaneReply);
 }
 
-// The request message containing the user's name.
 message GetCabinetRequest {
 	repeated uint64 Numbers = 1;
 }
 
-// The response message containing the greetings.
 message GetCabinetReply {
 	repeated Cabinet Cabinets = 1;
 }
 
-// The request message containing the user's name.
 message GetRowRequest {
 	uint64 CabinetNumber = 1;
 	uint64 RowNumber = 2;
 }
 
-// The response message containing the greetings.
 message GetRowReply {
 	optional Row Row = 1;
 }
 
-// The request message containing the user's name.
 message GetLaneRequest {
 	uint64 CabinetNumber = 1;
 	uint64 RowNumber = 2;
 	uint64 LaneNumber = 3;
 }
 
-// The response message containing the greetings.
 message GetLaneReply {
 	optional Lane Lane = 1;
 }
